@@ -7,10 +7,11 @@ jobs:
             id: cache
             with:
                 path: |
-                    ~/.cache
+                    ./.cache
                 key: ${{ runner.os }}-test
-        -   run: 'ls -l ~/.cache || :'
-        -   run: mkdir -p ~/.cache && echo Test > ~/.cache/Test
+        -   run: |
+                mkdir ./.cache
+                echo Test > ./.cache/Test
             if: steps.cache.outputs.cache-hit != 'true'
         -   run: exit 1
             if: steps.cache.outputs.cache-hit == 'true'
@@ -22,9 +23,9 @@ jobs:
             id: cache
             with:
                 path: |
-                    ~/.cache
+                    ./.cache
                 key: ${{ runner.os }}-test
-        -   run: 'ls -l ~/.cache || :'
+        -   run: 'ls -l ./.cache'
         -   run: exit 1
             if: steps.cache.outputs.cache-hit != 'true'
         -   run: echo We hit the cache!
