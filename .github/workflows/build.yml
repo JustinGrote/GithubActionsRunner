@@ -117,4 +117,5 @@ jobs:
         
         kill $workerpid
         kill $serverpid
+        ./Runner.Client${{ matrix.exeSuffix }} -P ubuntu-latest=-self-hosted -W ../../testworkflows/cache.yml
         popd
